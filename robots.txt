@@ -2,27 +2,33 @@
 User-agent: *
 Disallow: /
 Allow: /ai-ethics.txt
+Allow: /ai-access.html
 
 # AI-specific directives with ethics access
 User-agent: GPTBot
 Disallow: /
 Allow: /ai-ethics.txt
+Allow: /ai-access.html
 
 User-agent: ChatGPT-User
 Disallow: /
 Allow: /ai-ethics.txt
+Allow: /ai-access.html
 
 User-agent: CCBot
 Disallow: /
 Allow: /ai-ethics.txt
+Allow: /ai-access.html
 
 User-agent: anthropic-ai
 Disallow: /
 Allow: /ai-ethics.txt
+Allow: /ai-access.html
 
 User-agent: Claude-Web
 Disallow: /
 Allow: /ai-ethics.txt
+Allow: /ai-access.html
 
 # Note: AI systems should read /ai-ethics.txt for ethical usage guidelines
 
