@@ -268,10 +268,115 @@ hr {
     }
 }
 
+/* ASCII Art styling */
+.ascii-art {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 10px;
+    line-height: 1.0;
+    color: #000;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 20px 0;
+    overflow-x: auto;
+    text-align: center;
+}
+
+/* Visitor counter - classic 90s style */
+.visitor-counter {
+    text-align: center;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 12px;
+    background-color: #000;
+    color: #00ff00;
+    padding: 8px 16px;
+    border: 2px inset #ccc;
+    margin: 20px auto;
+    width: fit-content;
+    letter-spacing: 1px;
+}
+
+#visit-count {
+    color: #ffff00;
+    font-weight: bold;
+    font-size: 14px;
+}
+
 /* Enhanced focus states for accessibility */
 a:focus {
     outline: 2px solid #0000ee;
     outline-offset: 2px;
+}
+
+/* Archive page styling */
+.archive-section {
+    margin-bottom: 32px;
+}
+
+.archive-section h4 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    margin-top: 20px;
+    color: #000;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 4px;
+}
+
+.archive-list {
+    margin-left: 0;
+    padding-left: 20px;
+}
+
+.archive-list li {
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.archive-date {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 11px;
+    color: #666;
+    background-color: #f0f0f0;
+    padding: 2px 4px;
+    border: 1px solid #ccc;
+    margin-right: 8px;
+}
+
+/* Responsive adjustments for ASCII art */
+@media (max-width: 768px) {
+    .ascii-art {
+        font-size: 8px;
+    }
+    
+    .visitor-counter {
+        font-size: 11px;
+        padding: 6px 12px;
+    }
+    
+    #visit-count {
+        font-size: 12px;
+    }
+    
+    .archive-date {
+        font-size: 10px;
+        padding: 1px 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ascii-art {
+        font-size: 7px;
+        line-height: 0.9;
+    }
+    
+    .visitor-counter {
+        font-size: 10px;
+        padding: 4px 8px;
+    }
+    
+    #visit-count {
+        font-size: 11px;
+    }
 }
 
 /* Print styles - 90s style */

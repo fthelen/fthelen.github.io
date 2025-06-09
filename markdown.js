@@ -185,8 +185,30 @@ function loadMarkdown(url) {
         });
 }
 
+// Visitor counter functionality - classic 90s style
+function initVisitorCounter() {
+    const visitCountElement = document.getElementById('visit-count');
+    if (!visitCountElement) return;
+    
+    // Get current count from localStorage (simulating server-side counter)
+    let visits = localStorage.getItem('blog-visits');
+    if (!visits) {
+        visits = Math.floor(Math.random() * 8543) + 1000; // Start with a "realistic" 90s number
+    } else {
+        visits = parseInt(visits) + 1;
+    }
+    
+    // Store the new count
+    localStorage.setItem('blog-visits', visits);
+    
+    // Display with leading zeros (classic 90s style)
+    visitCountElement.textContent = visits.toString().padStart(6, '0');
+}
+
 // Enhanced link interception with better URL handling
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize visitor counter
+    initVisitorCounter();
     document.addEventListener('click', function(e) {
         // Handle markdown file links
         if (e.target.tagName === 'A' && e.target.href.endsWith('.md')) {
