@@ -1,4 +1,4 @@
-// Basic markdown parser for simple cases
+// Basic markdown parser
 function parseMarkdown(text) {
     return text
         // Headers
@@ -13,25 +13,39 @@ function parseMarkdown(text) {
         // Links
         .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
         
-        // Line breaks
-        .replace(/\n\n/g, '</p><p>')
-        .replace(/\n/g, '<br>')
+        // Paragraphs (double line breaks)
+        .split('\n\n')
+        .map(para => para.trim() ? `<p>${para.replace(/\n/g, '<br>')}</p>` : '')
+        .join('')
         
-        // Wrap in paragraphs
-        .replace(/^(.+)/gm, '<p>$1</p>')
-        
-        // Clean up extra paragraph tags
-        .replace(/<\/p><p><h/g, '</p><h')
-        .replace(/<\/h([1-6])><p>/g, '</h$1><p>');
+        // Clean up headers in paragraphs
+        .replace(/<p>(<h[1-6]>.*<\/h[1-6]>)<\/p>/g, '$1');
 }
 
-// Auto-render markdown files when page loads
+// Handle markdown link clicks
+function loadMarkdown(url) {
+    fetch(url)
+        .then(response => response.text())
+        .then(markdown => {
+            document.body.innerHTML = `
+                <a href="index.html">&larr; Back to Blog</a>
+                <hr>
+                ${parseMarkdown(markdown)}
+                <hr>
+                <a href="index.html">&larr; Back to Blog</a>
+            `;
+        })
+        .catch(err => {
+            document.body.innerHTML = `<p>Error loading article. <a href="index.html">Back to Blog</a></p>`;
+        });
+}
+
+// Intercept markdown links
 document.addEventListener('DOMContentLoaded', function() {
-    if (window.location.pathname.endsWith('.md')) {
-        fetch(window.location.pathname)
-            .then(response => response.text())
-            .then(markdown => {
-                document.body.innerHTML = parseMarkdown(markdown);
-            });
-    }
+    document.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A' && e.target.href.endsWith('.md')) {
+            e.preventDefault();
+            loadMarkdown(e.target.href);
+        }
+    });
 });
