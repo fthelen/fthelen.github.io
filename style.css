@@ -58,3 +58,110 @@ footer {
     padding-top: 10px;
     font-size: 12px;
 }
+
+/* Enhanced markdown elements - 90s web aesthetic */
+
+/* Code styling */
+code {
+    font-family: "Courier New", Courier, monospace;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 1px 3px;
+    font-size: 13px;
+}
+
+pre {
+    font-family: "Courier New", Courier, monospace;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    overflow-x: auto;
+    white-space: pre;
+}
+
+pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 12px;
+}
+
+/* Blockquotes */
+blockquote {
+    margin: 10px 0;
+    padding: 5px 15px;
+    border-left: 4px solid #ccc;
+    background-color: #f9f9f9;
+    font-style: italic;
+}
+
+blockquote p {
+    margin: 5px 0;
+}
+
+/* Lists */
+ul, ol {
+    margin: 10px 0;
+    padding-left: 30px;
+}
+
+li {
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+/* Tables (if implemented later) */
+table {
+    border-collapse: collapse;
+    margin: 10px 0;
+    border: 1px solid black;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 5px 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+/* Strikethrough */
+del {
+    text-decoration: line-through;
+    color: #666;
+}
+
+/* Enhanced emphasis */
+strong {
+    font-weight: bold;
+}
+
+em {
+    font-style: italic;
+}
+
+/* Horizontal rules */
+hr {
+    border: none;
+    border-top: 1px solid black;
+    margin: 20px 0;
+    height: 0;
+}
+
+/* Loading and error states */
+.loading {
+    font-style: italic;
+    color: #666;
+}
+
+.error {
+    color: #800;
+    border: 1px solid #800;
+    background-color: #ffe;
+    padding: 10px;
+    margin: 10px 0;
+}
