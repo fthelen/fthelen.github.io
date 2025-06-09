@@ -1,10 +1,46 @@
 // Comprehensive markdown parser with 90s web aesthetic
 function parseMarkdown(text) {
-    // Escape HTML to prevent injection
+    // Enhanced HTML escaping to prevent XSS
     function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
+        if (typeof text !== 'string') return '';
+        return text
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#x27;')
+            .replace(/\//g, '&#x2F;');
+    }
+    
+    // Sanitize URLs to prevent javascript: and data: URIs (except safe data URIs)
+    function sanitizeUrl(url) {
+        if (typeof url !== 'string') return '#';
+        
+        // Remove any whitespace and convert to lowercase for checking
+        const cleanUrl = url.trim().toLowerCase();
+        
+        // Block dangerous protocols
+        if (cleanUrl.startsWith('javascript:') || 
+            cleanUrl.startsWith('vbscript:') || 
+            cleanUrl.startsWith('data:text/html') ||
+            cleanUrl.startsWith('data:application/')) {
+            return '#';
+        }
+        
+        // Allow safe protocols and relative URLs
+        if (cleanUrl.startsWith('http://') || 
+            cleanUrl.startsWith('https://') || 
+            cleanUrl.startsWith('mailto:') ||
+            cleanUrl.startsWith('#') ||
+            cleanUrl.startsWith('/') ||
+            cleanUrl.startsWith('./') ||
+            cleanUrl.startsWith('../') ||
+            !cleanUrl.includes(':')) {
+            return escapeHtml(url.trim());
+        }
+        
+        // Default to safe fallback
+        return '#';
     }
     
     // Process text line by line for better control
@@ -115,28 +151,51 @@ function parseMarkdown(text) {
     return result.join('\n');
 }
 
-// Parse inline markdown elements
+// Parse inline markdown elements with XSS protection
 function parseInlineMarkdown(text) {
-    return text
-        // Bold (strong emphasis)
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-        .replace(/__(.*?)__/g, '<strong>$1</strong>')
-        
-        // Italic (emphasis)
-        .replace(/\*(.*?)\*/g, '<em>$1</em>')
-        .replace(/_(.*?)_/g, '<em>$1</em>')
-        
-        // Strikethrough
-        .replace(/~~(.*?)~~/g, '<del>$1</del>')
-        
-        // Inline code
-        .replace(/`([^`]+)`/g, '<code>$1</code>')
-        
-        // Links
-        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
-        
-        // Auto-link URLs (90s style - basic but functional)
-        .replace(/(https?:\/\/[^\s]+)/g, '<a href="$1">$1</a>');
+    // First escape any HTML to prevent injection
+    let processedText = text;
+    
+    // Bold (strong emphasis) - escape content
+    processedText = processedText.replace(/\*\*(.*?)\*\*/g, (match, content) => {
+        return `<strong>${escapeHtml(content)}</strong>`;
+    });
+    processedText = processedText.replace(/__(.*?)__/g, (match, content) => {
+        return `<strong>${escapeHtml(content)}</strong>`;
+    });
+    
+    // Italic (emphasis) - escape content
+    processedText = processedText.replace(/\*(.*?)\*/g, (match, content) => {
+        return `<em>${escapeHtml(content)}</em>`;
+    });
+    processedText = processedText.replace(/_(.*?)_/g, (match, content) => {
+        return `<em>${escapeHtml(content)}</em>`;
+    });
+    
+    // Strikethrough - escape content
+    processedText = processedText.replace(/~~(.*?)~~/g, (match, content) => {
+        return `<del>${escapeHtml(content)}</del>`;
+    });
+    
+    // Inline code - escape content
+    processedText = processedText.replace(/`([^`]+)`/g, (match, content) => {
+        return `<code>${escapeHtml(content)}</code>`;
+    });
+    
+    // Links with URL sanitization
+    processedText = processedText.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, linkText, url) => {
+        const safeUrl = sanitizeUrl(url);
+        const safeText = escapeHtml(linkText);
+        return `<a href="${safeUrl}">${safeText}</a>`;
+    });
+    
+    // Auto-link URLs with sanitization
+    processedText = processedText.replace(/(https?:\/\/[^\s]+)/g, (match, url) => {
+        const safeUrl = sanitizeUrl(url);
+        return `<a href="${safeUrl}">${escapeHtml(url)}</a>`;
+    });
+    
+    return processedText;
 }
 
 // Enhanced markdown loader with better error handling and navigation

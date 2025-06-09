@@ -1,0 +1,83 @@
+/* Base Styles - Core Typography & Layout */
+
+body {
+    font-family: var(--font-serif);
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    margin: 0;
+    padding: var(--spacing-md);
+    line-height: var(--line-height-base);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: var(--spacing-md);
+}
+
+/* Typography Hierarchy */
+h1 {
+    font-size: var(--font-size-h1);
+    margin-bottom: var(--spacing-sm);
+    margin-top: 0;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
+    font-weight: bold;
+    letter-spacing: -0.3px;
+}
+
+h3 {
+    font-size: var(--font-size-h3);
+    margin-bottom: var(--spacing-sm);
+    margin-top: var(--spacing-lg);
+    font-weight: bold;
+}
+
+p {
+    margin-bottom: var(--spacing-md);
+    margin-top: 0;
+}
+
+/* Links */
+a {
+    color: var(--color-link);
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+a:visited {
+    color: var(--color-link-visited);
+}
+
+a:hover {
+    color: var(--color-link-hover);
+    text-decoration-thickness: var(--border-width-thick);
+}
+
+a:focus {
+    outline: var(--border-width-thick) solid var(--color-link);
+    outline-offset: var(--border-width-thick);
+}
+
+/* Horizontal Rules */
+hr {
+    border: none;
+    border-top: var(--border-width-thick) solid var(--color-hr);
+    margin: var(--spacing-xl) 0;
+    width: 100%;
+}
+
+/* Lists */
+ul, ol {
+    margin: var(--spacing-sm) 0;
+    padding-left: 30px;
+}
+
+li {
+    margin-bottom: var(--spacing-xs);
+    line-height: var(--line-height-tight);
+}

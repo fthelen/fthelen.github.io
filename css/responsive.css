@@ -1,0 +1,129 @@
+/* Responsive Design - Mobile First Approach */
+
+/* Tablet Styles */
+@media (max-width: 768px) {
+    body {
+        padding: var(--spacing-md);
+        font-size: 15px;
+        line-height: var(--line-height-loose);
+    }
+    
+    h1 {
+        font-size: 24px;
+        margin-bottom: 6px;
+    }
+    
+    h2 {
+        font-size: 20px;
+        margin-top: var(--spacing-lg);
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    h3 {
+        font-size: 17px;
+        margin-bottom: 6px;
+        margin-top: var(--spacing-md);
+    }
+    
+    .meta {
+        font-size: 13px;
+    }
+    
+    .article-preview {
+        margin-bottom: var(--spacing-xl);
+        padding-bottom: var(--spacing-md);
+    }
+    
+    pre {
+        padding: var(--spacing-sm);
+        margin: var(--spacing-md) 0;
+        font-size: 13px;
+    }
+    
+    code {
+        font-size: 13px;
+        padding: var(--border-width) 3px;
+    }
+    
+    .ascii-art {
+        font-size: 8px;
+    }
+    
+    .visitor-counter {
+        font-size: 11px;
+        padding: 6px var(--spacing-sm);
+    }
+    
+    #visit-count {
+        font-size: var(--font-size-tiny);
+    }
+    
+    .archive-date {
+        font-size: 10px;
+        padding: var(--border-width) 3px;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 480px) {
+    body {
+        padding: var(--spacing-sm);
+        font-size: var(--font-size-small);
+    }
+    
+    h1 {
+        font-size: 22px;
+    }
+    
+    h2 {
+        font-size: var(--font-size-h3);
+        margin-top: var(--spacing-md);
+    }
+    
+    h3 {
+        font-size: var(--font-size-base);
+    }
+    
+    .meta {
+        font-size: var(--font-size-tiny);
+    }
+    
+    .ascii-art {
+        font-size: 7px;
+        line-height: 0.9;
+    }
+    
+    .visitor-counter {
+        font-size: 10px;
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+    
+    #visit-count {
+        font-size: 11px;
+    }
+}
+
+/* Print Styles - 90s Aesthetic */
+@media print {
+    body {
+        font-size: 12pt;
+        line-height: var(--line-height-tight);
+        color: black;
+        background: white;
+    }
+    
+    a {
+        color: black;
+        text-decoration: underline;
+    }
+    
+    pre, code {
+        background: white;
+        border: var(--border-width) solid black;
+    }
+    
+    .visitor-counter,
+    .ascii-art {
+        display: none;
+    }
+}

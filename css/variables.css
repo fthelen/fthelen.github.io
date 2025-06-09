@@ -1,0 +1,55 @@
+/* CSS Variables - 90s Theme System */
+:root {
+    /* Colors */
+    --color-text: #000;
+    --color-bg: #fff;
+    --color-link: #0000ee;
+    --color-link-visited: #551a8b;
+    --color-link-hover: #0000cc;
+    --color-meta: #555;
+    --color-border: #ddd;
+    --color-border-dark: #ccc;
+    --color-hr: #000;
+    
+    /* Terminal/Counter Colors */
+    --color-terminal-bg: #000;
+    --color-terminal-text: #00ff00;
+    --color-terminal-highlight: #ffff00;
+    
+    /* Code Colors */
+    --color-code-bg: #f5f5f5;
+    --color-code-border: #ddd;
+    --color-pre-bg: #f8f8f8;
+    
+    /* Typography */
+    --font-serif: Times, "Times New Roman", serif;
+    --font-mono: "Courier New", Courier, monospace;
+    
+    /* Font Sizes */
+    --font-size-base: 16px;
+    --font-size-small: 14px;
+    --font-size-tiny: 12px;
+    --font-size-h1: 28px;
+    --font-size-h2: 22px;
+    --font-size-h3: 18px;
+    
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-xxl: 40px;
+    
+    /* Layout */
+    --max-width: 800px;
+    --line-height-base: 1.6;
+    --line-height-tight: 1.4;
+    --line-height-loose: 1.5;
+    
+    /* Borders */
+    --border-width: 1px;
+    --border-width-thick: 2px;
+    --border-radius: 2px;
+    --border-radius-md: 4px;
+}
