@@ -1,21 +1,18 @@
-title: Francis Thelen's Weblog
+title: "Francis Thelen's Weblog"
 
 author:
-  name: Francis Thelen
-  email: your-email@domain.com
+  name: "Francis Thelen"
 
-The `>` after `description:` means to ignore line-breaks until next key. If
-  you wish to omit the line-break after the end of text, use `>-` instead.
 description: >
-My personal weblog, where I write about my interests, projects, and
+  My personal weblog, where I write about my interests, projects, and
   experiences. This is a place for me to share my thoughts and connect with
   others.
 
 theme: minima
 
 plugins:
- - jekyll-feed
- - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-seo-tag
 
 minima:
   skin: auto
