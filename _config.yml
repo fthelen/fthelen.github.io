@@ -47,9 +47,9 @@ minima:
       url: "/feed.xml"
 
   # List *only* these pages in the top-right nav bar (optional)
-   nav_pages:
-     - about.md
-     - tags.md
+  #  nav_pages:
+  #    - about.md
+  #    - tags.md
 
   # Dont hide the built-in feed link
   hide_site_feed_link: false
