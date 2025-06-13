@@ -1,56 +1,63 @@
 <!-- _includes/footer.html -->
 <footer class="site-footer">
-  <div class="wrapper" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem">
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <!-- left‑hand column -->
+      <div class="footer-col footer-col-1">
+        <p class="text-small" style="margin:0">
+          &copy; {{ 'now' | date: '%Y' }}
+          {% if site.author and site.author.name %}
+            {{ site.author.name | escape }}
+          {% else %}
+            {{ site.title | replace: "'s Weblog","" | escape }}
+          {% endif %}.
+          All rights&nbsp;reserved.<br/>
+          Last&nbsp;updated&nbsp;{{ site.time | date: '%b&nbsp;%d,&nbsp;%Y&nbsp;%H:%M&nbsp;%Z' }}<br/>
+          <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+          &middot;
+          <a href="https://github.com/fthelen">GitHub</a>
+        </p>
+      </div>
 
-    <!-- left-hand text -->
-    <p class="text-sm" style="margin:0">
-      &copy; {{ 'now' | date: '%Y' }}
-      {{ site.author.name | default: site.title }}.
-      All rights&nbsp;reserved.
-      &bull; Last&nbsp;updated&nbsp;{{ site.time | date: '%b&nbsp;%d,&nbsp;%Y&nbsp;%H:%M&nbsp;%Z' }}
-      &bull; <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
-      &bull; <a href="https://github.com/fthelen">GitHub</a>
-    </p>
-
-    <!-- dark-mode toggle -->
-    <button id="dark-mode-toggle" aria-label="Toggle dark mode"
-      style="background:none;border:0;font-size:1.25rem;cursor:pointer">
-      &#127769; <!-- crescent-moon emoji -->
-    </button>
+      <!-- right‑hand column -->
+      <div class="footer-col footer-col-2" style="text-align:right">
+        <button id="dark-mode-toggle"
+                aria-label="Toggle dark mode"
+                style="background:none;border:0;font-size:1.25rem;cursor:pointer">
+          &#127769;  <!-- crescent‑moon emoji -->
+        </button>
+      </div>
+    </div>
   </div>
 
-  <!-- tiny dark-mode helper -->
+  <!-- dark‑mode helper -->
   <script>
     (function () {
-      var root = document.documentElement;
-      var key = 'prefers-dark';
+      var root  = document.documentElement;
+      var key   = 'prefers-dark';
       var saved = localStorage.getItem(key);
 
-      /* 1️⃣  apply stored or OS preference on first paint */
+      /* apply stored or OS preference on first paint */
       if (saved === 'yes' ||
-        (saved === null && matchMedia('(prefers-color-scheme: dark)').matches)) {
+          (saved === null && matchMedia('(prefers-color-scheme: dark)').matches)) {
         root.classList.add('dark');
       }
 
-      /* 2️⃣  toggle + remember on click */
+      /* toggle + remember on click */
       document.getElementById('dark-mode-toggle')
-        .addEventListener('click', function () {
-          root.classList.toggle('dark');
-          localStorage.setItem(key, root.classList.contains('dark') ? 'yes' : 'no');
-        });
+              .addEventListener('click', function () {
+        root.classList.toggle('dark');
+        localStorage.setItem(key, root.classList.contains('dark') ? 'yes' : 'no');
+      });
     })();
   </script>
 
-  <!-- minimal dark-mode CSS -->
+  <!-- minimal dark‑mode CSS -->
   <style>
     html.dark,
-    html.dark body {
-      background: #111;
-      color: #eee;
-    }
+    html.dark body { background:#111; color:#eee; }
+    html.dark a    { color:#8bd0ff; }
 
-    html.dark a {
-      color: #8bd0ff;
-    }
+    #dark-mode-toggle:hover { opacity:0.7; }
   </style>
 </footer>
