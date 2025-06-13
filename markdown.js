@@ -1,23 +1,23 @@
 // Comprehensive markdown parser with 90s web aesthetic
-function parseMarkdown(text) {
-    // Enhanced HTML escaping to prevent XSS
-    function escapeHtml(text) {
-        if (typeof text !== 'string') return '';
-        return text
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;')
-            .replace(/'/g, '&#x27;')
-            .replace(/\//g, '&#x2F;');
-    }
-    
-    // Sanitize URLs to block javascript:, vbscript:, and all data: URIs
-    function sanitizeUrl(url) {
-        if (typeof url !== 'string') return '#';
-        
-        // Remove any whitespace and convert to lowercase for checking
-        const cleanUrl = url.trim().toLowerCase();
+
+// Enhanced HTML escaping to prevent XSS
+function escapeHtml(text) {
+    if (typeof text !== 'string') return '';
+    return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#x27;')
+        .replace(/\//g, '&#x2F;');
+}
+
+// Sanitize URLs to block javascript:, vbscript:, and all data: URIs
+function sanitizeUrl(url) {
+    if (typeof url !== 'string') return '#';
+
+    // Remove any whitespace and convert to lowercase for checking
+    const cleanUrl = url.trim().toLowerCase();
         
         // Block dangerous protocols
         if (cleanUrl.startsWith('javascript:') || 
@@ -41,8 +41,9 @@ function parseMarkdown(text) {
         
         // Default to safe fallback
         return '#';
-    }
+}
     
+function parseMarkdown(text) {
     // Process text line by line for better control
     const lines = text.split('\n');
     const result = [];
