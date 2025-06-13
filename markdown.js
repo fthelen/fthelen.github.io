@@ -130,7 +130,7 @@ function parseMarkdown(text) {
         }
         
         // Handle inline code
-        line = line.replace(/`([^`]+)`/g, '<code>$1</code>');
+        // Inline code will be handled in parseInlineMarkdown()
         
         // Handle empty lines (paragraph breaks)
         if (line.trim() === '') {
