@@ -2,7 +2,7 @@
 layout: post
 title: "My First Post"
 date: 2025-06-13
-tags: [test
+tags: test
 categories: meta
 ---
 
