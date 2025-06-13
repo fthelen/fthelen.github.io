@@ -7,20 +7,50 @@
       &copy; {{ 'now' | date: '%Y' }}
       {{ site.author.name | default: site.title }}.
       All rights&nbsp;reserved.
-      ï Last&nbsp;updated&nbsp;{{ site.time | date: '%b&nbsp;%d,&nbsp;%Y&nbsp;%H:%M&nbsp;%Z' }}
-      ï <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
-      ï <a href="https://github.com/fthelen">GitHub</a>
+      &bull; Last&nbsp;updated&nbsp;{{ site.time | date: '%b&nbsp;%d,&nbsp;%Y&nbsp;%H:%M&nbsp;%Z' }}
+      &bull; <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+      &bull; <a href="https://github.com/fthelen">GitHub</a>
     </p>
 
     <!-- dark-mode toggle -->
     <button id="dark-mode-toggle" aria-label="Toggle dark mode"
       style="background:none;border:0;font-size:1.25rem;cursor:pointer">
-      ??
+      &#127769; <!-- crescent-moon emoji -->
     </button>
   </div>
 
-  <script>/* same tiny JS as before */</script>
+  <!-- tiny dark-mode helper -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var key = 'prefers-dark';
+      var saved = localStorage.getItem(key);
+
+      /* 1Ô∏è‚É£  apply stored or OS preference on first paint */
+      if (saved === 'yes' ||
+        (saved === null && matchMedia('(prefers-color-scheme: dark)').matches)) {
+        root.classList.add('dark');
+      }
+
+      /* 2Ô∏è‚É£  toggle + remember on click */
+      document.getElementById('dark-mode-toggle')
+        .addEventListener('click', function () {
+          root.classList.toggle('dark');
+          localStorage.setItem(key, root.classList.contains('dark') ? 'yes' : 'no');
+        });
+    })();
+  </script>
+
+  <!-- minimal dark-mode CSS -->
   <style>
-    /* same minimal dark-mode CSS */
+    html.dark,
+    html.dark body {
+      background: #111;
+      color: #eee;
+    }
+
+    html.dark a {
+      color: #8bd0ff;
+    }
   </style>
 </footer>
