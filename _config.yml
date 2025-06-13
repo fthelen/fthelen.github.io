@@ -1,55 +1,23 @@
-# ------------------------------
-#  Site-wide settings
-# ------------------------------
-title: "Francis Thelen's Weblog"
-description: >
-  Personal notes, quick how-tos and project write-ups.
+title: Francis Thelen's Weblog
 
 author:
-  name: "Francis Thelen"
-  # email: "you@example.com"      # ? add if you ever want it in meta tags
+  name: Francis Thelen
+  email: your-email@domain.com
 
-url: "https://fthelen.github.io"  # change to https://yourdomain.com if you add a CNAME
-baseurl: ""                       # leave blank for a user/org site
+The `>` after `description:` means to ignore line-breaks until next key. If
+  you wish to omit the line-break after the end of text, use `>-` instead.
+description: >
+My personal weblog, where I write about my interests, projects, and
+  experiences. This is a place for me to share my thoughts and connect with
+  others.
 
-# ------------------------------
-#  Build settings
-# ------------------------------
-theme: minima                     # keep the Gem-version bundled by GitHub Pages
+theme: minima
+
 plugins:
-  - jekyll-feed
-  - jekyll-seo-tag                # already whitelisted on GitHub Pages
+ - jekyll-feed
+ - jekyll-seo-tag
 
-# Uncomment to silence Sass deprecation noise, if you hit it
-# sass:
-#   quiet_deps: true
-#   silence_deprecations: [import]
-
-# ------------------------------
-#  Minima-specific settings
-# ------------------------------
 minima:
-  skin: auto                      # light ? dark based on OS preference
-
-  # Show the first paragraph of each post on the home page
-  show_excerpts: true
-
-  # Date format displayed under post titles
-  date_format: "%Y-%m-%d"
-
-  # Social-icon bar in the footer (ordered list)
-  social_links:
-    - title: GitHub
-      icon: github
-      url: "https://github.com/fthelen"
-    - title: RSS
-      icon: rss
-      url: "/feed.xml"
-
-  # List *only* these pages in the top-right nav bar (optional)
-  #  nav_pages:
-  #    - about.md
-  #    - tags.md
-
-  # Dont hide the built-in feed link
+  skin: auto
+  date_format: "%b-%d-%Y"
   hide_site_feed_link: false
