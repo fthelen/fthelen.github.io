@@ -51,5 +51,5 @@ minima:
      - about.md
      - tags.md
 
-  # Don’t hide the built-in feed link
+  # Dont hide the built-in feed link
   hide_site_feed_link: false
