@@ -12,7 +12,7 @@ function parseMarkdown(text) {
             .replace(/\//g, '&#x2F;');
     }
     
-    // Sanitize URLs to prevent javascript: and data: URIs (except safe data URIs)
+    // Sanitize URLs to block javascript:, vbscript:, and all data: URIs
     function sanitizeUrl(url) {
         if (typeof url !== 'string') return '#';
         
