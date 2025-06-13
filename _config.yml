@@ -1,12 +1,55 @@
+# ------------------------------
+#  Site-wide settings
+# ------------------------------
 title: "Francis Thelen's Weblog"
-description: "Personal notes and projects"
-theme: minima
+description: >
+  Personal notes, quick how-tos and project write-ups.
 
 author:
   name: "Francis Thelen"
-  
-# Optional: social-icon links in the footer (Minima shows these automatically)
+  # email: "you@example.com"      # ? add if you ever want it in meta tags
+
+url: "https://fthelen.github.io"  # change to https://yourdomain.com if you add a CNAME
+baseurl: ""                       # leave blank for a user/org site
+
+# ------------------------------
+#  Build settings
+# ------------------------------
+theme: minima                     # keep the Gem-version bundled by GitHub Pages
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag                # already whitelisted on GitHub Pages
+
+# Uncomment to silence Sass deprecation noise, if you hit it
+# sass:
+#   quiet_deps: true
+#   silence_deprecations: [import]
+
+# ------------------------------
+#  Minima-specific settings
+# ------------------------------
 minima:
+  skin: auto                      # light ? dark based on OS preference
+
+  # Show the first paragraph of each post on the home page
+  show_excerpts: true
+
+  # Date format displayed under post titles
+  date_format: "%Y-%m-%d"
+
+  # Social-icon bar in the footer (ordered list)
   social_links:
-    github: fthelen
-    rss: "/feed.xml"
+    - title: GitHub
+      icon: github
+      url: "https://github.com/fthelen"
+    - title: RSS
+      icon: rss
+      url: "/feed.xml"
+
+  # List *only* these pages in the top-right nav bar (optional)
+   nav_pages:
+     - about.md
+     - tags.md
+
+  # Don’t hide the built-in feed link
+  hide_site_feed_link: false
