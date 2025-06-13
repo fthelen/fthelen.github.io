@@ -1,0 +1,26 @@
+<!-- _includes/footer.html -->
+<footer class="site-footer">
+  <div class="wrapper" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem">
+
+    <!-- left-hand text -->
+    <p class="text-sm" style="margin:0">
+      &copy; {{ 'now' | date: '%Y' }}
+      {{ site.author.name | default: site.title }}.
+      All rights&nbsp;reserved.
+      • Last&nbsp;updated&nbsp;{{ site.time | date: '%b&nbsp;%d,&nbsp;%Y&nbsp;%H:%M&nbsp;%Z' }}
+      • <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+      • <a href="https://github.com/fthelen">GitHub</a>
+    </p>
+
+    <!-- dark-mode toggle -->
+    <button id="dark-mode-toggle" aria-label="Toggle dark mode"
+      style="background:none;border:0;font-size:1.25rem;cursor:pointer">
+      ??
+    </button>
+  </div>
+
+  <script>/* same tiny JS as before */</script>
+  <style>
+    /* same minimal dark-mode CSS */
+  </style>
+</footer>
