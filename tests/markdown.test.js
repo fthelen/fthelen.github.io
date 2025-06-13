@@ -1,5 +1,3 @@
-const assert = require('assert');
-
 // Minimal DOM stubs for markdown.js
 global.document = {
   addEventListener: () => {},
@@ -19,7 +17,10 @@ global.localStorage = {
 
 const { parseMarkdown, sanitizeUrl } = require('../markdown.js');
 
-assert.strictEqual(sanitizeUrl('javascript:alert(1)'), '#');
-assert.strictEqual(parseMarkdown('# Title'), '<h1>Title</h1>');
+test('sanitizeUrl returns # on dangerous URLs', () => {
+  expect(sanitizeUrl('javascript:alert(1)')).toBe('#');
+});
 
-console.log('All tests passed');
+test('parseMarkdown converts headers', () => {
+  expect(parseMarkdown('# Title')).toBe('<h1>Title</h1>');
+});

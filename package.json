@@ -4,10 +4,13 @@
   "description": "This is my personal blog. A place where I publish thoughts, drafts, and pilot ideas. I welcome discourse and collaboration.",
   "main": "markdown.js",
   "scripts": {
-    "test": "node tests/markdown.test.js"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
 }
