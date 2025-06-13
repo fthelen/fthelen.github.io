@@ -1,3 +1,12 @@
-title: Francis Thelen's Weblog
-description: My GitHub Pages-powered blog
+title: "Francis Thelen's Weblog"
+description: "Personal notes and projects"
 theme: minima
+
+author:
+  name: "Francis Thelen"
+  
+# Optional: social-icon links in the footer (Minima shows these automatically)
+minima:
+  social_links:
+    github: fthelen
+    rss: "/feed.xml"
