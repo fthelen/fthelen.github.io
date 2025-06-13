@@ -1,7 +1,0 @@
-{% if page.tags %}
-<p class="post-tags">
-    {% for t in page.tags %}
-    <a href="{{ '/tags/#' }}{{ t | slugify }}">{{ t }}</a>{% unless forloop.last %}&nbsp;{% endunless %}
-    {% endfor %}
-</p>
-{% endif %}
