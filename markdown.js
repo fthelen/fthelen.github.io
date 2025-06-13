@@ -1,47 +1,42 @@
-// Comprehensive markdown parser with 90s web aesthetic
-function parseMarkdown(text) {
-    // Enhanced HTML escaping to prevent XSS
-    function escapeHtml(text) {
-        if (typeof text !== 'string') return '';
-        return text
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;')
-            .replace(/'/g, '&#x27;')
-            .replace(/\//g, '&#x2F;');
-    }
-    
-    // Sanitize URLs to prevent javascript: and data: URIs (except safe data URIs)
-    function sanitizeUrl(url) {
-        if (typeof url !== 'string') return '#';
-        
-        // Remove any whitespace and convert to lowercase for checking
-        const cleanUrl = url.trim().toLowerCase();
-        
-        // Block dangerous protocols
-        if (cleanUrl.startsWith('javascript:') || 
-            cleanUrl.startsWith('vbscript:') || 
-            cleanUrl.startsWith('data:text/html') ||
-            cleanUrl.startsWith('data:application/')) {
-            return '#';
-        }
-        
-        // Allow safe protocols and relative URLs
-        if (cleanUrl.startsWith('http://') || 
-            cleanUrl.startsWith('https://') || 
-            cleanUrl.startsWith('mailto:') ||
-            cleanUrl.startsWith('#') ||
-            cleanUrl.startsWith('/') ||
-            cleanUrl.startsWith('./') ||
-            cleanUrl.startsWith('../') ||
-            !cleanUrl.includes(':')) {
-            return escapeHtml(url.trim());
-        }
-        
-        // Default to safe fallback
+function escapeHtml(text) {
+    if (typeof text !== 'string') return '';
+    return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#x27;')
+        .replace(/\//g, '&#x2F;');
+}
+
+function sanitizeUrl(url) {
+    if (typeof url !== 'string') return '#';
+
+    const cleanUrl = url.trim().toLowerCase();
+
+    if (cleanUrl.startsWith('javascript:') ||
+        cleanUrl.startsWith('vbscript:') ||
+        cleanUrl.startsWith('data:text/html') ||
+        cleanUrl.startsWith('data:application/')) {
         return '#';
     }
+
+    if (cleanUrl.startsWith('http://') ||
+        cleanUrl.startsWith('https://') ||
+        cleanUrl.startsWith('mailto:') ||
+        cleanUrl.startsWith('#') ||
+        cleanUrl.startsWith('/') ||
+        cleanUrl.startsWith('./') ||
+        cleanUrl.startsWith('../') ||
+        !cleanUrl.includes(':')) {
+        return escapeHtml(url.trim());
+    }
+
+    return '#';
+}
+
+// Comprehensive markdown parser with 90s web aesthetic
+function parseMarkdown(text) {
     
     // Process text line by line for better control
     const lines = text.split('\n');
@@ -291,3 +286,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { parseMarkdown, sanitizeUrl };
+}
