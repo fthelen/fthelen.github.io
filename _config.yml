@@ -7,12 +7,13 @@ description: >
   experiences. This is a place for me to share my thoughts and connect with
   others.
 
-theme: minima
+remote_theme: jekyll/minima
 
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-
+  - jekyll-remote-theme
+  
 minima:
   skin: dark
   date_format: "%b-%d-%Y"
